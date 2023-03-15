@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="universityDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="datAcademician">
+          <Key>
+            <PropertyRef Name="AcID" />
+          </Key>
+          <Property Name="AcID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcFirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="AcLastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" />
+          <Property Name="AcNo" Type="char" MaxLength="5" />
+          <Property Name="AcPass" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="datDepartment">
+          <Key>
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="DepID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'universityDb.dbo.datGrades' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="datGrades">
+          <Property Name="Exam1" Type="tinyint" />
+          <Property Name="Exam2" Type="tinyint" />
+          <Property Name="Exam3" Type="tinyint" />
+          <Property Name="Quiz1" Type="tinyint" />
+          <Property Name="Quiz2" Type="tinyint" />
+          <Property Name="ExtraPoint" Type="tinyint" />
+          <Property Name="Project" Type="tinyint" />
+          <Property Name="Lesson" Type="int" />
+          <Property Name="Student" Type="int" />
+        </EntityType>-->
+        <EntityType Name="datLessons">
+          <Key>
+            <PropertyRef Name="LessonID" />
+          </Key>
+          <Property Name="LessonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LessonName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="datStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentFirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="StudentLastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="StudentNo" Type="char" MaxLength="5" />
+          <Property Name="StudentPass" Type="nvarchar" MaxLength="10" />
+          <Property Name="StudentMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentImg" Type="nvarchar" MaxLength="100" />
+          <Property Name="StudentDep" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_datGrades_datLessons" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_datGrades_datStudent" />-->
+        <Association Name="FK_datStudent_datDepartment">
+          <End Role="datDepartment" Type="Self.datDepartment" Multiplicity="0..1" />
+          <End Role="datStudent" Type="Self.datStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datDepartment">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="datStudent">
+              <PropertyRef Name="StudentDep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="universityDbModelStoreContainer">
+          <EntitySet Name="datAcademician" EntityType="Self.datAcademician" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datDepartment" EntityType="Self.datDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datLessons" EntityType="Self.datLessons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datStudent" EntityType="Self.datStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_datStudent_datDepartment" Association="Self.FK_datStudent_datDepartment">
+            <End Role="datDepartment" EntitySet="datDepartment" />
+            <End Role="datStudent" EntitySet="datStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="universityDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="datAcademician">
+          <Key>
+            <PropertyRef Name="AcID" />
+          </Key>
+          <Property Name="AcID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AcLastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AcNo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="AcPass" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="datDepartment">
+          <Key>
+            <PropertyRef Name="DepID" />
+          </Key>
+          <Property Name="DepID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="datStudent" Relationship="Self.FK_datStudent_datDepartment" FromRole="datDepartment" ToRole="datStudent" />
+        </EntityType>
+        <EntityType Name="datLessons">
+          <Key>
+            <PropertyRef Name="LessonID" />
+          </Key>
+          <Property Name="LessonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="datStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StudentLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StudentNo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="StudentPass" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StudentMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StudentDep" Type="Int32" />
+          <NavigationProperty Name="datDepartment" Relationship="Self.FK_datStudent_datDepartment" FromRole="datStudent" ToRole="datDepartment" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_datStudent_datDepartment">
+          <End Role="datDepartment" Type="Self.datDepartment" Multiplicity="0..1" />
+          <End Role="datStudent" Type="Self.datStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datDepartment">
+              <PropertyRef Name="DepID" />
+            </Principal>
+            <Dependent Role="datStudent">
+              <PropertyRef Name="StudentDep" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="universityDbEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="datAcademician" EntityType="Self.datAcademician" />
+          <EntitySet Name="datDepartment" EntityType="Self.datDepartment" />
+          <EntitySet Name="datLessons" EntityType="Self.datLessons" />
+          <EntitySet Name="datStudent" EntityType="Self.datStudent" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_datStudent_datDepartment" Association="Self.FK_datStudent_datDepartment">
+            <End Role="datDepartment" EntitySet="datDepartment" />
+            <End Role="datStudent" EntitySet="datStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="universityDbModelStoreContainer" CdmEntityContainer="universityDbEntities2">
+          <EntitySetMapping Name="datAcademician">
+            <EntityTypeMapping TypeName="universityDbModel.datAcademician">
+              <MappingFragment StoreEntitySet="datAcademician">
+                <ScalarProperty Name="AcID" ColumnName="AcID" />
+                <ScalarProperty Name="AcFirstName" ColumnName="AcFirstName" />
+                <ScalarProperty Name="AcLastName" ColumnName="AcLastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AcNo" ColumnName="AcNo" />
+                <ScalarProperty Name="AcPass" ColumnName="AcPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datDepartment">
+            <EntityTypeMapping TypeName="universityDbModel.datDepartment">
+              <MappingFragment StoreEntitySet="datDepartment">
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datLessons">
+            <EntityTypeMapping TypeName="universityDbModel.datLessons">
+              <MappingFragment StoreEntitySet="datLessons">
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datStudent">
+            <EntityTypeMapping TypeName="universityDbModel.datStudent">
+              <MappingFragment StoreEntitySet="datStudent">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
+                <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
+                <ScalarProperty Name="StudentNo" ColumnName="StudentNo" />
+                <ScalarProperty Name="StudentPass" ColumnName="StudentPass" />
+                <ScalarProperty Name="StudentMail" ColumnName="StudentMail" />
+                <ScalarProperty Name="StudentImg" ColumnName="StudentImg" />
+                <ScalarProperty Name="StudentDep" ColumnName="StudentDep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="universityDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
