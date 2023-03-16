@@ -14,7 +14,16 @@ namespace University_Management.Entity
     
     public partial class datLessons
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public datLessons()
+        {
+            this.datGrades = new HashSet<datGrades>();
+        }
+    
         public int LessonID { get; set; }
         public string LessonName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<datGrades> datGrades { get; set; }
     }
 }

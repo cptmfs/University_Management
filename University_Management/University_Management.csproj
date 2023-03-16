@@ -61,6 +61,9 @@
     <Compile Include="Entity\datDepartment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\datGrades.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\datLessons.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
     <Compile Include="Entity\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\View_1.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DepartmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="Forms\DepartmentListForm.Designer.cs">
       <DependentUpon>DepartmentListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GradesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GradesForm.Designer.cs">
+      <DependentUpon>GradesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StudentForm.cs">
       <SubType>Form</SubType>
@@ -116,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DepartmentListForm.resx">
       <DependentUpon>DepartmentListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GradesForm.resx">
+      <DependentUpon>GradesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>

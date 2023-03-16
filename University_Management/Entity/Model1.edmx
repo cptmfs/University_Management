@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="universityDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="universityDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="datAcademician">
           <Key>
             <PropertyRef Name="AcID" />
@@ -23,19 +23,21 @@
           <Property Name="DepID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepName" Type="nvarchar" MaxLength="30" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'universityDb.dbo.datGrades' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="datGrades">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Exam1" Type="tinyint" />
           <Property Name="Exam2" Type="tinyint" />
           <Property Name="Exam3" Type="tinyint" />
           <Property Name="Quiz1" Type="tinyint" />
           <Property Name="Quiz2" Type="tinyint" />
-          <Property Name="ExtraPoint" Type="tinyint" />
           <Property Name="Project" Type="tinyint" />
+          <Property Name="StudentAvg" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Lesson" Type="int" />
           <Property Name="Student" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="datLessons">
           <Key>
             <PropertyRef Name="LessonID" />
@@ -55,6 +57,7 @@ warning 6013: The table/view 'universityDb.dbo.datGrades' does not have a primar
           <Property Name="StudentMail" Type="nvarchar" MaxLength="50" />
           <Property Name="StudentImg" Type="nvarchar" MaxLength="100" />
           <Property Name="StudentDep" Type="int" />
+          <Property Name="StudentStatus" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -67,11 +70,48 @@ warning 6013: The table/view 'universityDb.dbo.datGrades' does not have a primar
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_datGrades_datLessons" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_datGrades_datStudent" />-->
+warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="int" Nullable="false" />
+          <Property Name="StudentFirstName" Type="nvarchar" MaxLength="30" />
+          <Property Name="StudentLastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LessonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Exam1" Type="tinyint" />
+          <Property Name="Exam2" Type="tinyint" />
+          <Property Name="Exam3" Type="tinyint" />
+          <Property Name="Quiz1" Type="tinyint" />
+          <Property Name="Quiz2" Type="tinyint" />
+          <Property Name="Project" Type="tinyint" />
+          <Property Name="StudentAvg" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Lesson" Type="int" />
+        </EntityType>
+        <Association Name="FK_datGrades_datLessons">
+          <End Role="datLessons" Type="Self.datLessons" Multiplicity="0..1" />
+          <End Role="datGrades" Type="Self.datGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datLessons">
+              <PropertyRef Name="LessonID" />
+            </Principal>
+            <Dependent Role="datGrades">
+              <PropertyRef Name="Lesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_datGrades_datStudent">
+          <End Role="datStudent" Type="Self.datStudent" Multiplicity="0..1" />
+          <End Role="datGrades" Type="Self.datGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="datGrades">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_datStudent_datDepartment">
           <End Role="datDepartment" Type="Self.datDepartment" Multiplicity="0..1" />
           <End Role="datStudent" Type="Self.datStudent" Multiplicity="*" />
@@ -87,16 +127,40 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
         <EntityContainer Name="universityDbModelStoreContainer">
           <EntitySet Name="datAcademician" EntityType="Self.datAcademician" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datDepartment" EntityType="Self.datDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="datGrades" EntityType="Self.datGrades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datLessons" EntityType="Self.datLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datStudent" EntityType="Self.datStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[GradeID] AS [GradeID], 
+    [View_1].[StudentFirstName] AS [StudentFirstName], 
+    [View_1].[StudentLastName] AS [StudentLastName], 
+    [View_1].[LessonName] AS [LessonName], 
+    [View_1].[Exam1] AS [Exam1], 
+    [View_1].[Exam2] AS [Exam2], 
+    [View_1].[Exam3] AS [Exam3], 
+    [View_1].[Quiz1] AS [Quiz1], 
+    [View_1].[Quiz2] AS [Quiz2], 
+    [View_1].[Project] AS [Project], 
+    [View_1].[StudentAvg] AS [StudentAvg], 
+    [View_1].[Lesson] AS [Lesson]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_datGrades_datLessons" Association="Self.FK_datGrades_datLessons">
+            <End Role="datLessons" EntitySet="datLessons" />
+            <End Role="datGrades" EntitySet="datGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_datGrades_datStudent" Association="Self.FK_datGrades_datStudent">
+            <End Role="datStudent" EntitySet="datStudent" />
+            <End Role="datGrades" EntitySet="datGrades" />
+          </AssociationSet>
           <AssociationSet Name="FK_datStudent_datDepartment" Association="Self.FK_datStudent_datDepartment">
             <End Role="datDepartment" EntitySet="datDepartment" />
             <End Role="datStudent" EntitySet="datStudent" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="universityDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -125,6 +189,7 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
           </Key>
           <Property Name="LessonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="datGrades" Relationship="universityDbModel.FK_datGrades_datLessons" FromRole="datLessons" ToRole="datGrades" />
         </EntityType>
         <EntityType Name="datStudent">
           <Key>
@@ -139,16 +204,8 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
           <Property Name="StudentImg" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="StudentDep" Type="Int32" />
           <NavigationProperty Name="datDepartment" Relationship="Self.FK_datStudent_datDepartment" FromRole="datStudent" ToRole="datDepartment" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="StudentStatus" Type="Boolean" />
+          <NavigationProperty Name="datGrades" Relationship="universityDbModel.FK_datGrades_datStudent" FromRole="datStudent" ToRole="datGrades" />
         </EntityType>
         <Association Name="FK_datStudent_datDepartment">
           <End Role="datDepartment" Type="Self.datDepartment" Multiplicity="0..1" />
@@ -167,12 +224,90 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
           <EntitySet Name="datDepartment" EntityType="Self.datDepartment" />
           <EntitySet Name="datLessons" EntityType="Self.datLessons" />
           <EntitySet Name="datStudent" EntityType="Self.datStudent" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_datStudent_datDepartment" Association="Self.FK_datStudent_datDepartment">
             <End Role="datDepartment" EntitySet="datDepartment" />
             <End Role="datStudent" EntitySet="datStudent" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="universityDbModel.sysdiagrams" />
+          <EntitySet Name="datGrades" EntityType="universityDbModel.datGrades" />
+          <AssociationSet Name="FK_datGrades_datLessons" Association="universityDbModel.FK_datGrades_datLessons">
+            <End Role="datLessons" EntitySet="datLessons" />
+            <End Role="datGrades" EntitySet="datGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_datGrades_datStudent" Association="universityDbModel.FK_datGrades_datStudent">
+            <End Role="datStudent" EntitySet="datStudent" />
+            <End Role="datGrades" EntitySet="datGrades" />
+          </AssociationSet>
+          <EntitySet Name="View_1" EntityType="universityDbModel.View_1" />
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="datGrades">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exam1" Type="Byte" />
+          <Property Name="Exam2" Type="Byte" />
+          <Property Name="Exam3" Type="Byte" />
+          <Property Name="Quiz1" Type="Byte" />
+          <Property Name="Quiz2" Type="Byte" />
+          <Property Name="Project" Type="Byte" />
+          <Property Name="Lesson" Type="Int32" />
+          <Property Name="Student" Type="Int32" />
+          <NavigationProperty Name="datLessons" Relationship="universityDbModel.FK_datGrades_datLessons" FromRole="datGrades" ToRole="datLessons" />
+          <NavigationProperty Name="datStudent" Relationship="universityDbModel.FK_datGrades_datStudent" FromRole="datGrades" ToRole="datStudent" />
+          <Property Name="StudentAvg" Type="Decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <Association Name="FK_datGrades_datLessons">
+          <End Type="universityDbModel.datLessons" Role="datLessons" Multiplicity="0..1" />
+          <End Type="universityDbModel.datGrades" Role="datGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datLessons">
+              <PropertyRef Name="LessonID" />
+            </Principal>
+            <Dependent Role="datGrades">
+              <PropertyRef Name="Lesson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_datGrades_datStudent">
+          <End Type="universityDbModel.datStudent" Role="datStudent" Multiplicity="0..1" />
+          <End Type="universityDbModel.datGrades" Role="datGrades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="datGrades">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="Int32" Nullable="false" />
+          <Property Name="StudentFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StudentLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Exam1" Type="Byte" />
+          <Property Name="Exam2" Type="Byte" />
+          <Property Name="Exam3" Type="Byte" />
+          <Property Name="Quiz1" Type="Byte" />
+          <Property Name="Quiz2" Type="Byte" />
+          <Property Name="Project" Type="Byte" />
+          <Property Name="StudentAvg" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Lesson" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -210,6 +345,7 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
           <EntitySetMapping Name="datStudent">
             <EntityTypeMapping TypeName="universityDbModel.datStudent">
               <MappingFragment StoreEntitySet="datStudent">
+                <ScalarProperty Name="StudentStatus" ColumnName="StudentStatus" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
                 <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
@@ -224,11 +360,45 @@ error 6004: The table 'universityDb.dbo.datGrades' is referenced by a relationsh
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="universityDbModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="datGrades">
+            <EntityTypeMapping TypeName="universityDbModel.datGrades">
+              <MappingFragment StoreEntitySet="datGrades">
+                <ScalarProperty Name="StudentAvg" ColumnName="StudentAvg" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Lesson" ColumnName="Lesson" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="universityDbModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="Lesson" ColumnName="Lesson" />
+                <ScalarProperty Name="StudentAvg" ColumnName="StudentAvg" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
+                <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

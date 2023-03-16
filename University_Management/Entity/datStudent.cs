@@ -14,6 +14,12 @@ namespace University_Management.Entity
     
     public partial class datStudent
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public datStudent()
+        {
+            this.datGrades = new HashSet<datGrades>();
+        }
+    
         public int StudentID { get; set; }
         public string StudentFirstName { get; set; }
         public string StudentLastName { get; set; }
@@ -22,7 +28,10 @@ namespace University_Management.Entity
         public string StudentMail { get; set; }
         public string StudentImg { get; set; }
         public Nullable<int> StudentDep { get; set; }
+        public Nullable<bool> StudentStatus { get; set; }
     
         public virtual datDepartment datDepartment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<datGrades> datGrades { get; set; }
     }
 }

@@ -4,13 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e93b5865b5a41f2ac38e095f480e274" Name="Diagram1">
+      <Diagram DiagramId="5e93b5865b5a41f2ac38e095f480e274" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="universityDbModel.datAcademician" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="universityDbModel.datDepartment" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="universityDbModel.datLessons" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="universityDbModel.datStudent" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="universityDbModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="universityDbModel.FK_datStudent_datDepartment" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="universityDbModel.sysdiagrams" Width="1.5" PointX="5.25" PointY="2.25" />
+        <EntityTypeShape EntityType="universityDbModel.datGrades" Width="1.5" PointX="5.25" PointY="5.125" />
+        <AssociationConnector Association="universityDbModel.FK_datGrades_datLessons" />
+        <AssociationConnector Association="universityDbModel.FK_datGrades_datStudent" />
+        <EntityTypeShape EntityType="universityDbModel.View_1" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

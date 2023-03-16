@@ -30,5 +30,7 @@ namespace University_Management.Entity
         public virtual DbSet<datLessons> datLessons { get; set; }
         public virtual DbSet<datStudent> datStudent { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<datGrades> datGrades { get; set; }
+        public virtual DbSet<View_1> View_1 { get; set; }
     }
 }

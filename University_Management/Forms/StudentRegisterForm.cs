@@ -18,7 +18,7 @@ namespace University_Management.Forms
         {
             InitializeComponent();
         }
-        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=universityDb;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-D3HGLAO\\SQLEXPRESS;Initial Catalog=universityDb;Integrated Security=True");
 
         private void StudentRegisterForm_Load(object sender, EventArgs e)
         {
@@ -57,6 +57,12 @@ namespace University_Management.Forms
                 MessageBox.Show("The passwords you entered did not match.","Password",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
             
+        }
+
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            txtImg.Text = openFileDialog1.FileName;
         }
     }
 }

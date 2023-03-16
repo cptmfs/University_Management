@@ -32,6 +32,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFile = new System.Windows.Forms.Button();
+            this.txtNo = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -46,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
-            this.txtNo = new System.Windows.Forms.MaskedTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +89,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnFile);
             this.groupBox1.Controls.Add(this.txtNo);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -110,6 +113,32 @@
             this.groupBox1.Size = new System.Drawing.Size(376, 378);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // btnFile
+            // 
+            this.btnFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnFile.ForeColor = System.Drawing.Color.White;
+            this.btnFile.Location = new System.Drawing.Point(348, 247);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(22, 24);
+            this.btnFile.TabIndex = 19;
+            this.btnFile.Text = "...";
+            this.btnFile.UseVisualStyleBackColor = false;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
+            // txtNo
+            // 
+            this.txtNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.txtNo.ForeColor = System.Drawing.Color.White;
+            this.txtNo.Location = new System.Drawing.Point(126, 124);
+            this.txtNo.Mask = "00000";
+            this.txtNo.Name = "txtNo";
+            this.txtNo.Size = new System.Drawing.Size(222, 24);
+            this.txtNo.TabIndex = 3;
+            this.txtNo.ValidatingType = typeof(int);
             // 
             // label9
             // 
@@ -254,16 +283,9 @@
             this.txtSurname.Size = new System.Drawing.Size(222, 24);
             this.txtSurname.TabIndex = 2;
             // 
-            // txtNo
+            // openFileDialog1
             // 
-            this.txtNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
-            this.txtNo.ForeColor = System.Drawing.Color.White;
-            this.txtNo.Location = new System.Drawing.Point(126, 124);
-            this.txtNo.Mask = "00000";
-            this.txtNo.Name = "txtNo";
-            this.txtNo.Size = new System.Drawing.Size(222, 24);
-            this.txtNo.TabIndex = 3;
-            this.txtNo.ValidatingType = typeof(int);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // StudentRegisterForm
             // 
@@ -306,5 +328,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtImg;
         private System.Windows.Forms.MaskedTextBox txtNo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnFile;
     }
 }
