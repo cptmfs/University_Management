@@ -25,6 +25,9 @@ namespace University_Management.Forms
             cbxLesson.ValueMember = "LessonID";
             cbxLesson.DisplayMember = "LessonName";
             cbxLesson.DataSource = db.datLessons.ToList();
+            cbxLesson2.ValueMember = "LessonID";
+            cbxLesson2.DisplayMember = "LessonName";
+            cbxLesson2.DataSource = db.datLessons.ToList();
         }
         void GradeList()
         {
@@ -44,8 +47,9 @@ namespace University_Management.Forms
             //                 x.Student
             //             };
             //dataGridView1.DataSource = values.ToList(); 
-            dataGridView1.DataSource = db.View_1.ToList();
-            dataGridView1.Columns["Lesson"].Visible = false;
+            //dataGridView1.DataSource = db.View_1.ToList();
+            dataGridView1.DataSource = db.StGrades2();
+            dataGridView1.Columns["LessonID"].Visible = false;
 
 
         }
@@ -56,15 +60,15 @@ namespace University_Management.Forms
             g.Exam1 = byte.Parse(txtEx1.Text);
             g.Exam2 = byte.Parse(txtEx2.Text);
             g.Exam3 = byte.Parse(txtEx3.Text);
-            g.Quiz1= byte.Parse(txtQuiz1.Text);
-            g.Quiz2=byte.Parse(txtQuiz2.Text);
+            g.Quiz1 = byte.Parse(txtQuiz1.Text);
+            g.Quiz2 = byte.Parse(txtQuiz2.Text);
             g.Project = byte.Parse(txtProject.Text);
             g.Lesson = int.Parse(cbxLesson.SelectedValue.ToString());
             g.Student = int.Parse(txtStudent.Text);
             g.StudentAvg = int.Parse(txtAvg.Text);
             db.datGrades.Add(g);
             db.SaveChanges();
-            MessageBox.Show("Student Grade information has been successfully saved in the system","Grade Add",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Student Grade information has been successfully saved in the system", "Grade Add", MessageBoxButtons.OK, MessageBoxIcon.Information);
             GradeList();
         }
 
@@ -73,12 +77,12 @@ namespace University_Management.Forms
             datGrades g = new datGrades();
             int ex1, ex2, ex3, q1, q2, p;
             double avg;
-            ex1=byte.Parse(txtEx1.Text);
+            ex1 = byte.Parse(txtEx1.Text);
             ex2 = byte.Parse(txtEx2.Text);
-            ex3= byte.Parse(txtEx3.Text);
-            q1= byte.Parse(txtQuiz1.Text);
-            q2= byte.Parse(txtQuiz2.Text);
-            p= byte.Parse(txtProject.Text);
+            ex3 = byte.Parse(txtEx3.Text);
+            q1 = byte.Parse(txtQuiz1.Text);
+            q2 = byte.Parse(txtQuiz2.Text);
+            p = byte.Parse(txtProject.Text);
             avg = (ex1 + ex2 + ex3 + q1 + q2 + p) / 6;
             txtAvg.Text = avg.ToString();
 
@@ -91,19 +95,67 @@ namespace University_Management.Forms
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtEx1.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtEx2.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtEx3.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            txtQuiz1.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-            txtQuiz2.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
-            txtProject.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
-            txtAvg.Text = dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString();
-            cbxLesson.SelectedValue= int.Parse(dataGridView1.Rows[e.RowIndex].Cells[11].Value.ToString());
+            txtEx1.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtEx2.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtEx3.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtQuiz1.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+            txtQuiz2.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+            txtProject.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+            txtAvg.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
+            cbxLesson.SelectedValue = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString());
         }
 
         private void btnList_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = db.View_1.ToList();
+            //dataGridView1.DataSource = db.View_1.ToList();
+            dataGridView1.DataSource = db.StGrades2();
+        }
+
+        private void cbxLesson2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var values = from x in db.datGrades
+                         select new
+                         {
+                             x.GradeID,
+                             x.datLessons.LessonName,
+                             Student = x.datStudent.StudentFirstName + " " + x.datStudent.StudentLastName,
+                             x.Exam1,
+                             x.Exam2,
+                             x.Exam3,
+                             x.Quiz1,
+                             x.Quiz2,
+                             x.Project,
+                             x.StudentAvg,
+                             x.Lesson
+                         };
+            int v = int.Parse(cbxLesson2.SelectedValue.ToString()); //cbxLesson2 nin secilen degeri valuemember olarak int geldiği için int dönüşümü yapıldı
+            dataGridView1.DataSource = values.Where(x => x.Lesson == v).ToList();
+            dataGridView1.Columns["Lesson"].Visible = false;
+
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var values = from x in db.datGrades
+                         select new
+                         {
+                             x.GradeID,
+                             x.datLessons.LessonName,
+                             Student_Name = x.datStudent.StudentFirstName + " " + x.datStudent.StudentLastName,
+                             x.Exam1,
+                             x.Exam2,
+                             x.Exam3,
+                             x.Quiz1,
+                             x.Quiz2,
+                             x.Project,
+                             x.StudentAvg,
+                             x.Student,
+                         };
+            int id = int.Parse(mskNo.Text);
+            dataGridView1.DataSource = values.Where(x => x.Student == id).ToList();
+            dataGridView1.Columns["Student"].Visible = false;
+
         }
     }
 }

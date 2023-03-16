@@ -12,6 +12,8 @@ namespace University_Management.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class universityDbEntities2 : DbContext
     {
@@ -31,6 +33,35 @@ namespace University_Management.Entity
         public virtual DbSet<datStudent> datStudent { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<datGrades> datGrades { get; set; }
-        public virtual DbSet<View_1> View_1 { get; set; }
+    
+        public virtual ObjectResult<Grades_Result> Grades()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Grades_Result>("Grades");
+        }
+    
+        public virtual ObjectResult<StudentGrades_Result> StudentGrades()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StudentGrades_Result>("StudentGrades");
+        }
+    
+        public virtual ObjectResult<StudentGradess_Result> StudentGradess()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StudentGradess_Result>("StudentGradess");
+        }
+    
+        public virtual ObjectResult<StGrade_Result> StGrade()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrade_Result>("StGrade");
+        }
+    
+        public virtual ObjectResult<StGrades_Result> StGrades()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades_Result>("StGrades");
+        }
+    
+        public virtual ObjectResult<StGrades2_Result> StGrades2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades2_Result>("StGrades2");
+        }
     }
 }

@@ -39,6 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtQuiz2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtQuiz1 = new System.Windows.Forms.TextBox();
             this.txtEx3 = new System.Windows.Forms.TextBox();
@@ -50,15 +51,20 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAvg = new System.Windows.Forms.TextBox();
+            this.btnCalculate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnFindStNo = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtStudent = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCalculate = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtAvg = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.cbxLesson2 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.mskNo = new System.Windows.Forms.MaskedTextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -129,7 +135,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(47, 258);
+            this.label8.Location = new System.Drawing.Point(48, 261);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 18);
             this.label8.TabIndex = 15;
@@ -186,13 +192,26 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSearch);
+            this.groupBox3.Controls.Add(this.mskNo);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.cbxLesson2);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Location = new System.Drawing.Point(3, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(836, 69);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 127);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 98);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(839, 400);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 429);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -320,6 +339,56 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(45, 323);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 18);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Average :";
+            // 
+            // txtAvg
+            // 
+            this.txtAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.txtAvg.ForeColor = System.Drawing.Color.White;
+            this.txtAvg.Location = new System.Drawing.Point(126, 320);
+            this.txtAvg.Name = "txtAvg";
+            this.txtAvg.Size = new System.Drawing.Size(222, 24);
+            this.txtAvg.TabIndex = 10;
+            // 
+            // btnCalculate
+            // 
+            this.btnCalculate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCalculate.ForeColor = System.Drawing.Color.White;
+            this.btnCalculate.Location = new System.Drawing.Point(111, 406);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(171, 30);
+            this.btnCalculate.TabIndex = 12;
+            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.UseVisualStyleBackColor = false;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(111, 359);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(171, 30);
+            this.btnAdd.TabIndex = 11;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // btnFindStNo
             // 
             this.btnFindStNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
@@ -354,63 +423,64 @@
             this.txtStudent.Size = new System.Drawing.Size(222, 24);
             this.txtStudent.TabIndex = 9;
             // 
-            // btnAdd
+            // cbxLesson2
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(111, 359);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(171, 30);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.cbxLesson2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.cbxLesson2.ForeColor = System.Drawing.Color.White;
+            this.cbxLesson2.FormattingEnabled = true;
+            this.cbxLesson2.Location = new System.Drawing.Point(151, 23);
+            this.cbxLesson2.Name = "cbxLesson2";
+            this.cbxLesson2.Size = new System.Drawing.Size(222, 26);
+            this.cbxLesson2.TabIndex = 24;
+            this.cbxLesson2.SelectedIndexChanged += new System.EventHandler(this.cbxLesson2_SelectedIndexChanged);
             // 
-            // btnCalculate
+            // label12
             // 
-            this.btnCalculate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
-            this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnCalculate.ForeColor = System.Drawing.Color.White;
-            this.btnCalculate.Location = new System.Drawing.Point(111, 406);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(171, 30);
-            this.btnCalculate.TabIndex = 12;
-            this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = false;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(8, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(137, 18);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Choose Lesson :";
             // 
-            // groupBox3
+            // label13
             // 
-            this.groupBox3.Location = new System.Drawing.Point(3, 23);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(836, 97);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(379, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(102, 18);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Student No :";
             // 
-            // txtAvg
+            // mskNo
             // 
-            this.txtAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
-            this.txtAvg.ForeColor = System.Drawing.Color.White;
-            this.txtAvg.Location = new System.Drawing.Point(126, 320);
-            this.txtAvg.Name = "txtAvg";
-            this.txtAvg.Size = new System.Drawing.Size(222, 24);
-            this.txtAvg.TabIndex = 10;
+            this.mskNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.mskNo.ForeColor = System.Drawing.Color.White;
+            this.mskNo.Location = new System.Drawing.Point(487, 23);
+            this.mskNo.Mask = "00000";
+            this.mskNo.Name = "mskNo";
+            this.mskNo.Size = new System.Drawing.Size(222, 24);
+            this.mskNo.TabIndex = 26;
+            this.mskNo.ValidatingType = typeof(int);
             // 
-            // label11
+            // btnSearch
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(45, 323);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 18);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Average :";
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(715, 20);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(115, 30);
+            this.btnSearch.TabIndex = 24;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // GradesForm
             // 
@@ -421,12 +491,14 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GradesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GradesForm";
             this.Load += new System.EventHandler(this.GradesForm_Load);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -466,5 +538,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtAvg;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.MaskedTextBox mskNo;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cbxLesson2;
+        private System.Windows.Forms.Label label12;
     }
 }

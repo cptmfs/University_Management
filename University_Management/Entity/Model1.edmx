@@ -28,12 +28,12 @@
             <PropertyRef Name="GradeID" />
           </Key>
           <Property Name="GradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Exam1" Type="tinyint" />
-          <Property Name="Exam2" Type="tinyint" />
-          <Property Name="Exam3" Type="tinyint" />
-          <Property Name="Quiz1" Type="tinyint" />
-          <Property Name="Quiz2" Type="tinyint" />
-          <Property Name="Project" Type="tinyint" />
+          <Property Name="Exam1" Type="int" />
+          <Property Name="Exam2" Type="int" />
+          <Property Name="Exam3" Type="int" />
+          <Property Name="Quiz1" Type="int" />
+          <Property Name="Quiz2" Type="int" />
+          <Property Name="Project" Type="int" />
           <Property Name="StudentAvg" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Lesson" Type="int" />
           <Property Name="Student" Type="int" />
@@ -71,23 +71,6 @@
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="View_1">
-          <Key>
-            <PropertyRef Name="GradeID" />
-          </Key>
-          <Property Name="GradeID" Type="int" Nullable="false" />
-          <Property Name="StudentFirstName" Type="nvarchar" MaxLength="30" />
-          <Property Name="StudentLastName" Type="nvarchar" MaxLength="20" />
-          <Property Name="LessonName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Exam1" Type="tinyint" />
-          <Property Name="Exam2" Type="tinyint" />
-          <Property Name="Exam3" Type="tinyint" />
-          <Property Name="Quiz1" Type="tinyint" />
-          <Property Name="Quiz2" Type="tinyint" />
-          <Property Name="Project" Type="tinyint" />
-          <Property Name="StudentAvg" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="Lesson" Type="int" />
-        </EntityType>
         <Association Name="FK_datGrades_datLessons">
           <End Role="datLessons" Type="Self.datLessons" Multiplicity="0..1" />
           <End Role="datGrades" Type="Self.datGrades" Multiplicity="*" />
@@ -124,6 +107,12 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Grades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StGrades2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StudentGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StudentGradess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="universityDbModelStoreContainer">
           <EntitySet Name="datAcademician" EntityType="Self.datAcademician" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datDepartment" EntityType="Self.datDepartment" Schema="dbo" store:Type="Tables" />
@@ -131,22 +120,6 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
           <EntitySet Name="datLessons" EntityType="Self.datLessons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="datStudent" EntityType="Self.datStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [View_1].[GradeID] AS [GradeID], 
-    [View_1].[StudentFirstName] AS [StudentFirstName], 
-    [View_1].[StudentLastName] AS [StudentLastName], 
-    [View_1].[LessonName] AS [LessonName], 
-    [View_1].[Exam1] AS [Exam1], 
-    [View_1].[Exam2] AS [Exam2], 
-    [View_1].[Exam3] AS [Exam3], 
-    [View_1].[Quiz1] AS [Quiz1], 
-    [View_1].[Quiz2] AS [Quiz2], 
-    [View_1].[Project] AS [Project], 
-    [View_1].[StudentAvg] AS [StudentAvg], 
-    [View_1].[Lesson] AS [Lesson]
-    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_datGrades_datLessons" Association="Self.FK_datGrades_datLessons">
             <End Role="datLessons" EntitySet="datLessons" />
             <End Role="datGrades" EntitySet="datGrades" />
@@ -229,6 +202,11 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
             <End Role="datStudent" EntitySet="datStudent" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="universityDbModel.sysdiagrams" />
+          <FunctionImport Name="Grades" ReturnType="Collection(universityDbModel.Grades_Result)" />
+          <FunctionImport Name="StudentGrades" ReturnType="Collection(universityDbModel.StudentGrades_Result)" />
+          <FunctionImport Name="StudentGradess" ReturnType="Collection(universityDbModel.StudentGradess_Result)" />
+          <FunctionImport Name="StGrade" ReturnType="Collection(universityDbModel.StGrade_Result)" />
+          <FunctionImport Name="StGrades" ReturnType="Collection(universityDbModel.StGrades_Result)" />
           <EntitySet Name="datGrades" EntityType="universityDbModel.datGrades" />
           <AssociationSet Name="FK_datGrades_datLessons" Association="universityDbModel.FK_datGrades_datLessons">
             <End Role="datLessons" EntitySet="datLessons" />
@@ -238,7 +216,7 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
             <End Role="datStudent" EntitySet="datStudent" />
             <End Role="datGrades" EntitySet="datGrades" />
           </AssociationSet>
-          <EntitySet Name="View_1" EntityType="universityDbModel.View_1" />
+          <FunctionImport Name="StGrades2" ReturnType="Collection(universityDbModel.StGrades2_Result)" />
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -250,22 +228,81 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <ComplexType Name="Grades_Result">
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student_Info" Nullable="true" MaxLength="51" />
+          <Property Type="Byte" Name="Exam1" Nullable="true" />
+          <Property Type="Byte" Name="Exam2" Nullable="true" />
+          <Property Type="Byte" Name="Exam3" Nullable="true" />
+          <Property Type="Byte" Name="Quiz1" Nullable="true" />
+          <Property Type="Byte" Name="Quiz2" Nullable="true" />
+          <Property Type="Decimal" Name="Student_Average" Nullable="true" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="StudentGrades_Result">
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="true" MaxLength="51" />
+          <Property Type="Byte" Name="Exam1" Nullable="true" />
+          <Property Type="Byte" Name="Exam2" Nullable="true" />
+          <Property Type="Byte" Name="Exam3" Nullable="true" />
+          <Property Type="Byte" Name="Quiz1" Nullable="true" />
+          <Property Type="Byte" Name="Quiz2" Nullable="true" />
+          <Property Type="Decimal" Name="Student_Average" Nullable="true" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="StudentGradess_Result">
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="true" MaxLength="51" />
+          <Property Type="Byte" Name="Exam1" Nullable="true" />
+          <Property Type="Byte" Name="Exam2" Nullable="true" />
+          <Property Type="Byte" Name="Exam3" Nullable="true" />
+          <Property Type="Byte" Name="Quiz1" Nullable="true" />
+          <Property Type="Byte" Name="Quiz2" Nullable="true" />
+          <Property Type="Decimal" Name="Student_Average" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="Lesson" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="StGrade_Result">
+          <Property Type="Int32" Name="GradeID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="true" MaxLength="51" />
+          <Property Type="Byte" Name="Exam1" Nullable="true" />
+          <Property Type="Byte" Name="Exam2" Nullable="true" />
+          <Property Type="Byte" Name="Exam3" Nullable="true" />
+          <Property Type="Byte" Name="Quiz1" Nullable="true" />
+          <Property Type="Byte" Name="Quiz2" Nullable="true" />
+          <Property Type="Decimal" Name="Student_Average" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="StGrades_Result">
+          <Property Type="Int32" Name="GradeID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="true" MaxLength="51" />
+          <Property Type="Byte" Name="Exam1" Nullable="true" />
+          <Property Type="Byte" Name="Exam2" Nullable="true" />
+          <Property Type="Byte" Name="Exam3" Nullable="true" />
+          <Property Type="Byte" Name="Quiz1" Nullable="true" />
+          <Property Type="Byte" Name="Quiz2" Nullable="true" />
+          <Property Type="Byte" Name="Project" Nullable="true" />
+          <Property Type="Decimal" Name="Average" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="datGrades">
           <Key>
             <PropertyRef Name="GradeID" />
           </Key>
           <Property Name="GradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Exam1" Type="Byte" />
-          <Property Name="Exam2" Type="Byte" />
-          <Property Name="Exam3" Type="Byte" />
-          <Property Name="Quiz1" Type="Byte" />
-          <Property Name="Quiz2" Type="Byte" />
-          <Property Name="Project" Type="Byte" />
+          <Property Name="Exam1" Type="Int32" />
+          <Property Name="Exam2" Type="Int32" />
+          <Property Name="Exam3" Type="Int32" />
+          <Property Name="Quiz1" Type="Int32" />
+          <Property Name="Quiz2" Type="Int32" />
+          <Property Name="Project" Type="Int32" />
+          <Property Name="StudentAvg" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Lesson" Type="Int32" />
           <Property Name="Student" Type="Int32" />
           <NavigationProperty Name="datLessons" Relationship="universityDbModel.FK_datGrades_datLessons" FromRole="datGrades" ToRole="datLessons" />
           <NavigationProperty Name="datStudent" Relationship="universityDbModel.FK_datGrades_datStudent" FromRole="datGrades" ToRole="datStudent" />
-          <Property Name="StudentAvg" Type="Decimal" Precision="5" Scale="2" />
         </EntityType>
         <Association Name="FK_datGrades_datLessons">
           <End Type="universityDbModel.datLessons" Role="datLessons" Multiplicity="0..1" />
@@ -291,23 +328,19 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="View_1">
-          <Key>
-            <PropertyRef Name="GradeID" />
-          </Key>
-          <Property Name="GradeID" Type="Int32" Nullable="false" />
-          <Property Name="StudentFirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="StudentLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LessonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Exam1" Type="Byte" />
-          <Property Name="Exam2" Type="Byte" />
-          <Property Name="Exam3" Type="Byte" />
-          <Property Name="Quiz1" Type="Byte" />
-          <Property Name="Quiz2" Type="Byte" />
-          <Property Name="Project" Type="Byte" />
-          <Property Name="StudentAvg" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Lesson" Type="Int32" />
-        </EntityType>
+        <ComplexType Name="StGrades2_Result">
+          <Property Type="Int32" Name="GradeID" Nullable="false" />
+          <Property Type="String" Name="LessonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="true" MaxLength="51" />
+          <Property Type="Int32" Name="Exam1" Nullable="true" />
+          <Property Type="Int32" Name="Exam2" Nullable="true" />
+          <Property Type="Int32" Name="Exam3" Nullable="true" />
+          <Property Type="Int32" Name="Quiz1" Nullable="true" />
+          <Property Type="Int32" Name="Quiz2" Nullable="true" />
+          <Property Type="Int32" Name="Project" Nullable="true" />
+          <Property Type="Decimal" Name="Average" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="LessonID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -368,26 +401,90 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Grades" FunctionName="universityDbModel.Store.Grades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.Grades_Result">
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student_Info" ColumnName="Student Info" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Student_Average" ColumnName="Student Average" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StudentGrades" FunctionName="universityDbModel.Store.StudentGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.StudentGrades_Result">
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Student_Average" ColumnName="Student Average" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StudentGradess" FunctionName="universityDbModel.Store.StudentGradess">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.StudentGradess_Result">
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Student_Average" ColumnName="Student Average" />
+                <ScalarProperty Name="Lesson" ColumnName="Lesson" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StGrade" FunctionName="universityDbModel.Store.StGrade">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.StGrade_Result">
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Student_Average" ColumnName="Student Average" />
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StGrades" FunctionName="universityDbModel.Store.StGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.StGrades_Result">
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="datGrades">
             <EntityTypeMapping TypeName="universityDbModel.datGrades">
               <MappingFragment StoreEntitySet="datGrades">
-                <ScalarProperty Name="StudentAvg" ColumnName="StudentAvg" />
                 <ScalarProperty Name="Student" ColumnName="Student" />
                 <ScalarProperty Name="Lesson" ColumnName="Lesson" />
-                <ScalarProperty Name="Project" ColumnName="Project" />
-                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
-                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
-                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
-                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
-                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
-                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_1">
-            <EntityTypeMapping TypeName="universityDbModel.View_1">
-              <MappingFragment StoreEntitySet="View_1">
-                <ScalarProperty Name="Lesson" ColumnName="Lesson" />
                 <ScalarProperty Name="StudentAvg" ColumnName="StudentAvg" />
                 <ScalarProperty Name="Project" ColumnName="Project" />
                 <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
@@ -395,13 +492,27 @@ warning 6002: The table/view 'universityDb.dbo.View_1' does not have a primary k
                 <ScalarProperty Name="Exam3" ColumnName="Exam3" />
                 <ScalarProperty Name="Exam2" ColumnName="Exam2" />
                 <ScalarProperty Name="Exam1" ColumnName="Exam1" />
-                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
-                <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
-                <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
                 <ScalarProperty Name="GradeID" ColumnName="GradeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="StGrades2" FunctionName="universityDbModel.Store.StGrades2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="universityDbModel.StGrades2_Result">
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+                <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Exam1" ColumnName="Exam1" />
+                <ScalarProperty Name="Exam2" ColumnName="Exam2" />
+                <ScalarProperty Name="Exam3" ColumnName="Exam3" />
+                <ScalarProperty Name="Quiz1" ColumnName="Quiz1" />
+                <ScalarProperty Name="Quiz2" ColumnName="Quiz2" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Average" ColumnName="Average" />
+                <ScalarProperty Name="LessonID" ColumnName="LessonID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

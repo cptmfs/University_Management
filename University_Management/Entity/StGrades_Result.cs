@@ -10,21 +10,19 @@
 namespace University_Management.Entity
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class View_1
+    public partial class StGrades_Result
     {
         public int GradeID { get; set; }
-        public string StudentFirstName { get; set; }
-        public string StudentLastName { get; set; }
         public string LessonName { get; set; }
+        public string Student { get; set; }
         public Nullable<byte> Exam1 { get; set; }
         public Nullable<byte> Exam2 { get; set; }
         public Nullable<byte> Exam3 { get; set; }
         public Nullable<byte> Quiz1 { get; set; }
         public Nullable<byte> Quiz2 { get; set; }
         public Nullable<byte> Project { get; set; }
-        public Nullable<decimal> StudentAvg { get; set; }
-        public Nullable<int> Lesson { get; set; }
+        public Nullable<decimal> Average { get; set; }
+        public int LessonID { get; set; }
     }
 }
