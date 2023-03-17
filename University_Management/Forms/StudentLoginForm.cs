@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace University_Management.Forms
 {
-    public partial class StudentLoginForm : Form
+    public partial class StudentLoginForm : Form 
     {
         public StudentLoginForm()
         {
