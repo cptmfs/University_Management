@@ -17,7 +17,7 @@ namespace University_Management.Forms
         {
             InitializeComponent();
         }
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-D3HGLAO\\SQLEXPRESS;Initial Catalog=universityDb;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=universityDb;Integrated Security=True");
         private void btnSave_Click(object sender, EventArgs e)
         {
             connection.Open();
@@ -37,6 +37,31 @@ namespace University_Management.Forms
                 MessageBox.Show("UserID or Password Wrong! Please  Re-Enter","Login Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);  
             }
             connection.Close();
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtID.Text=="00000" && txtPass.Text=="000")
+            {
+                ChartForm form = new ChartForm();
+                form.Show();
+                this.Hide();
+            }
+        }
+
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            if (txtID.Text == "00000" && txtPass.Text == "000")
+            {
+                ChartForm form = new ChartForm();
+                form.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

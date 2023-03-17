@@ -31,7 +31,6 @@ namespace University_Management.Entity
         public virtual DbSet<datDepartment> datDepartment { get; set; }
         public virtual DbSet<datLessons> datLessons { get; set; }
         public virtual DbSet<datStudent> datStudent { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<datGrades> datGrades { get; set; }
     
         public virtual ObjectResult<Grades_Result> Grades()
@@ -62,6 +61,21 @@ namespace University_Management.Entity
         public virtual ObjectResult<StGrades2_Result> StGrades2()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades2_Result>("StGrades2");
+        }
+    
+        public virtual ObjectResult<StGrades3_Result> StGrades3()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades3_Result>("StGrades3");
+        }
+    
+        public virtual ObjectResult<StGrades4_Result> StGrades4()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades4_Result>("StGrades4");
+        }
+    
+        public virtual ObjectResult<StGrades5_Result> StGrades5()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StGrades5_Result>("StGrades5");
         }
     }
 }

@@ -64,6 +64,7 @@
             this.btnFindStNo = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtStudent = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -88,7 +89,7 @@
             this.btnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnList.ForeColor = System.Drawing.Color.White;
-            this.btnList.Location = new System.Drawing.Point(111, 452);
+            this.btnList.Location = new System.Drawing.Point(126, 422);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(171, 30);
             this.btnList.TabIndex = 13;
@@ -103,7 +104,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(111, 497);
+            this.btnUpdate.Location = new System.Drawing.Point(126, 458);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(171, 30);
             this.btnUpdate.TabIndex = 14;
@@ -384,6 +385,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtAvg);
             this.groupBox1.Controls.Add(this.btnCalculate);
@@ -443,7 +445,7 @@
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCalculate.ForeColor = System.Drawing.Color.White;
-            this.btnCalculate.Location = new System.Drawing.Point(111, 406);
+            this.btnCalculate.Location = new System.Drawing.Point(126, 386);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(171, 30);
             this.btnCalculate.TabIndex = 12;
@@ -458,7 +460,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(111, 359);
+            this.btnAdd.Location = new System.Drawing.Point(126, 350);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(171, 30);
             this.btnAdd.TabIndex = 11;
@@ -499,6 +501,21 @@
             this.txtStudent.Name = "txtStudent";
             this.txtStudent.Size = new System.Drawing.Size(222, 24);
             this.txtStudent.TabIndex = 9;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(126, 494);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 30);
+            this.btnClose.TabIndex = 24;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // GradesForm
             // 
@@ -562,5 +579,6 @@
         private System.Windows.Forms.ComboBox cbxLesson2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnSearchNo;
+        private System.Windows.Forms.Button btnClose;
     }
 }

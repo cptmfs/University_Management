@@ -19,7 +19,7 @@ namespace University_Management.Forms
             InitializeComponent();
         }
         universityDbEntities2 db = new universityDbEntities2();
-        SqlConnection connection = new SqlConnection("Data Source=DESKTOP-D3HGLAO\\SQLEXPRESS;Initial Catalog=universityDb;Integrated Security=True");
+        SqlConnection connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=universityDb;Integrated Security=True");
         private void StudentForm_Load(object sender, EventArgs e)
         {
             ListStudent();
@@ -64,6 +64,7 @@ namespace University_Management.Forms
             txtMail.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             txtPicture.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
             comboBox1.SelectedValue = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -91,6 +92,20 @@ namespace University_Management.Forms
             MessageBox.Show("Student Information has been successfully updated in the system", "Student Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListStudent();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            PictureForm pictureForm = new PictureForm();
+            pictureForm.imgLocation = txtPicture.Text;
+            pictureForm.ShowDialog();
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

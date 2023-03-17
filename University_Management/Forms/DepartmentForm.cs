@@ -18,10 +18,6 @@ namespace University_Management.Forms
             InitializeComponent();
         }
 
-        private void DepartmentForm_Load(object sender, EventArgs e)
-        {
-
-        }
         universityDbEntities2 db= new universityDbEntities2();
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -37,6 +33,11 @@ namespace University_Management.Forms
                 db.SaveChanges();
                 MessageBox.Show("Departmend Added","Add",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

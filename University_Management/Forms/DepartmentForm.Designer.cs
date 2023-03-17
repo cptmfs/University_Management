@@ -34,6 +34,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +66,9 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(150, 83);
+            this.btnSave.Location = new System.Drawing.Point(126, 83);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(171, 30);
+            this.btnSave.Size = new System.Drawing.Size(105, 30);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -75,6 +76,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtDepName);
@@ -87,6 +89,21 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(243, 83);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(105, 30);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // DepartmentForm
             // 
@@ -101,7 +118,6 @@
             this.Name = "DepartmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepartmentForm";
-            this.Load += new System.EventHandler(this.DepartmentForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -116,5 +132,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnClose;
     }
 }

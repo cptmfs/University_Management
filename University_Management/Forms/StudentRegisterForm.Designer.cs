@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(111, 328);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(171, 30);
+            this.btnSave.Size = new System.Drawing.Size(116, 30);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -89,6 +90,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnFile);
             this.groupBox1.Controls.Add(this.txtNo);
             this.groupBox1.Controls.Add(this.label9);
@@ -287,6 +289,21 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(232, 328);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(116, 30);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // StudentRegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -330,5 +347,6 @@
         private System.Windows.Forms.MaskedTextBox txtNo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnFile;
+        private System.Windows.Forms.Button btnClose;
     }
 }

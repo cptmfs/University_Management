@@ -52,6 +52,7 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,6 +60,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btnList);
             this.groupBox1.Controls.Add(this.button3);
@@ -104,7 +106,7 @@
             this.btnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnList.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnList.ForeColor = System.Drawing.Color.White;
-            this.btnList.Location = new System.Drawing.Point(111, 333);
+            this.btnList.Location = new System.Drawing.Point(120, 325);
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(171, 30);
             this.btnList.TabIndex = 9;
@@ -124,6 +126,7 @@
             this.button3.TabIndex = 18;
             this.button3.Text = "...";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnUpdate
             // 
@@ -132,7 +135,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(111, 378);
+            this.btnUpdate.Location = new System.Drawing.Point(120, 361);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(171, 30);
             this.btnUpdate.TabIndex = 10;
@@ -299,7 +302,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(111, 423);
+            this.btnDelete.Location = new System.Drawing.Point(120, 397);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(171, 30);
             this.btnDelete.TabIndex = 11;
@@ -335,6 +338,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(839, 449);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(120, 433);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(171, 30);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // StudentForm
             // 
@@ -384,5 +402,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnList;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnClose;
     }
 }

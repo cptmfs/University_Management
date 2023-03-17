@@ -37,6 +37,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtID
@@ -44,12 +45,13 @@
             this.txtID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.txtID.ForeColor = System.Drawing.Color.White;
             this.txtID.Location = new System.Drawing.Point(135, 128);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Mask = "00000";
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(209, 24);
             this.txtID.TabIndex = 0;
             this.txtID.ValidatingType = typeof(int);
+            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // txtPass
             // 
@@ -60,6 +62,7 @@
             this.txtPass.Size = new System.Drawing.Size(209, 24);
             this.txtPass.TabIndex = 2;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // label1
             // 
@@ -117,7 +120,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(135, 252);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(171, 30);
+            this.btnSave.Size = new System.Drawing.Size(101, 30);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Sign In";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -139,12 +142,27 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Ink Free", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(56, 377);
+            this.label4.Location = new System.Drawing.Point(54, 377);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(288, 26);
             this.label4.TabIndex = 12;
             this.label4.Text = "Prepared by cptmfs - 2023";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(177)))), ((int)(((byte)(140)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(242, 252);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(102, 30);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "Exit";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // StudentLoginForm
             // 
@@ -152,6 +170,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(390, 424);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnSave);
@@ -163,7 +182,7 @@
             this.Controls.Add(this.txtID);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StudentLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentLoginForm";
@@ -183,5 +202,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnClose;
     }
 }

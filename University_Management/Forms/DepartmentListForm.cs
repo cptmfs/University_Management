@@ -29,5 +29,10 @@ namespace University_Management.Forms
             dataGridView1.DataSource = values.ToList();
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

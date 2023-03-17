@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="universityDbModel.datLessons" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="universityDbModel.datStudent" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="universityDbModel.FK_datStudent_datDepartment" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="universityDbModel.sysdiagrams" Width="1.5" PointX="5.25" PointY="2.25" />
         <EntityTypeShape EntityType="universityDbModel.datGrades" Width="1.5" PointX="5.25" PointY="5" />
         <AssociationConnector Association="universityDbModel.FK_datGrades_datLessons" />
         <AssociationConnector Association="universityDbModel.FK_datGrades_datStudent" />
