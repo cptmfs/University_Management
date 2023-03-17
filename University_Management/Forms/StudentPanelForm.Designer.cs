@@ -1,6 +1,6 @@
 ﻿namespace University_Management.Forms
 {
-    partial class StudentForm
+    partial class StudentPanelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnList = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -49,53 +48,22 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // dataGridView1
             // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.btnList);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.btnUpdate);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtPicture);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtMail);
-            this.groupBox1.Controls.Add(this.txtPass);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtNo);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtSurname);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.txtID);
-            this.groupBox1.Location = new System.Drawing.Point(863, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 472);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(53, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 18);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "ID : ";
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 20);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(839, 449);
+            this.dataGridView1.TabIndex = 0;
             // 
             // btnList
             // 
@@ -118,7 +86,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(351, 248);
+            this.button3.Location = new System.Drawing.Point(351, 218);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(22, 24);
             this.button3.TabIndex = 18;
@@ -138,14 +106,13 @@
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(123, 20);
+            this.label9.Location = new System.Drawing.Point(138, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(144, 18);
             this.label9.TabIndex = 17;
@@ -156,7 +123,7 @@
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.comboBox1.ForeColor = System.Drawing.Color.White;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(126, 284);
+            this.comboBox1.Location = new System.Drawing.Point(126, 254);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(222, 26);
             this.comboBox1.TabIndex = 8;
@@ -166,7 +133,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(10, 284);
+            this.label8.Location = new System.Drawing.Point(10, 254);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(110, 18);
             this.label8.TabIndex = 15;
@@ -177,7 +144,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(44, 250);
+            this.label7.Location = new System.Drawing.Point(44, 220);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 18);
             this.label7.TabIndex = 13;
@@ -187,7 +154,7 @@
             // 
             this.txtPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.txtPicture.ForeColor = System.Drawing.Color.White;
-            this.txtPicture.Location = new System.Drawing.Point(126, 247);
+            this.txtPicture.Location = new System.Drawing.Point(126, 217);
             this.txtPicture.Name = "txtPicture";
             this.txtPicture.Size = new System.Drawing.Size(222, 24);
             this.txtPicture.TabIndex = 7;
@@ -197,7 +164,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(66, 220);
+            this.label6.Location = new System.Drawing.Point(66, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 18);
             this.label6.TabIndex = 11;
@@ -207,7 +174,7 @@
             // 
             this.txtMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.txtMail.ForeColor = System.Drawing.Color.White;
-            this.txtMail.Location = new System.Drawing.Point(126, 217);
+            this.txtMail.Location = new System.Drawing.Point(126, 187);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(222, 24);
             this.txtMail.TabIndex = 6;
@@ -216,7 +183,7 @@
             // 
             this.txtPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.txtPass.ForeColor = System.Drawing.Color.White;
-            this.txtPass.Location = new System.Drawing.Point(126, 187);
+            this.txtPass.Location = new System.Drawing.Point(126, 157);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(222, 24);
             this.txtPass.TabIndex = 5;
@@ -226,7 +193,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(22, 190);
+            this.label4.Location = new System.Drawing.Point(22, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 18);
             this.label4.TabIndex = 7;
@@ -236,17 +203,17 @@
             // 
             this.txtNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
             this.txtNo.ForeColor = System.Drawing.Color.White;
-            this.txtNo.Location = new System.Drawing.Point(126, 157);
+            this.txtNo.Location = new System.Drawing.Point(126, 67);
             this.txtNo.Name = "txtNo";
             this.txtNo.Size = new System.Drawing.Size(222, 24);
-            this.txtNo.TabIndex = 4;
+            this.txtNo.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(38, 160);
+            this.label3.Location = new System.Drawing.Point(38, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 18);
             this.label3.TabIndex = 5;
@@ -305,38 +272,44 @@
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // txtID
-            // 
-            this.txtID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
-            this.txtID.ForeColor = System.Drawing.Color.White;
-            this.txtID.Location = new System.Drawing.Point(126, 67);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(222, 24);
-            this.txtID.TabIndex = 1;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 8);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(845, 472);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
-            // dataGridView1
+            // groupBox1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(839, 449);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.groupBox1.Controls.Add(this.btnList);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtPicture);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtMail);
+            this.groupBox1.Controls.Add(this.txtPass);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtNo);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtSurname);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Location = new System.Drawing.Point(863, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(376, 472);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
             // 
-            // StudentForm
+            // StudentPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -347,20 +320,22 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "StudentForm";
-            this.Text = "StudentForm";
-            this.Load += new System.EventHandler(this.StudentForm_Load);
+            this.Name = "StudentPanelForm";
+            this.Text = "StudentLoginForm";
+            this.Load += new System.EventHandler(this.StudentPanelForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -378,11 +353,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btnList;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

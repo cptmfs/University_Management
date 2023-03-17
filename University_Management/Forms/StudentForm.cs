@@ -88,7 +88,7 @@ namespace University_Management.Forms
             x.StudentImg = txtPicture.Text;
             x.StudentDep = int.Parse(comboBox1.SelectedValue.ToString());
             db.SaveChanges();
-            MessageBox.Show("Student Information has been successfully updated in the system", "Student Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Student Information has been successfully updated in the system", "Student Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ListStudent();
 
         }
