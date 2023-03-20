@@ -22,6 +22,7 @@ namespace University_Management.Forms
 
         private void GradesForm_Load(object sender, EventArgs e)
         {
+
             GradeList();
             cbxLesson.DisplayMember = "LessonName";
             cbxLesson.ValueMember = "LessonID";
@@ -101,6 +102,8 @@ namespace University_Management.Forms
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >=0)
+            {
             txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtEx1.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtEx2.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -111,6 +114,9 @@ namespace University_Management.Forms
             txtAvg.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
             cbxLesson.SelectedValue = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString());
             txtStudent.Text = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
+            }
+
+
 
         }
 
