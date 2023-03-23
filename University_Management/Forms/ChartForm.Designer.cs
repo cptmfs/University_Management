@@ -270,7 +270,6 @@
             this.Controls.Add(this.pnlStudent);
             this.Controls.Add(this.pnlDepList);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChartFrom";

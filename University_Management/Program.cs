@@ -16,7 +16,7 @@ namespace University_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.ChartForm());
+            Application.Run(new Forms.StudentLoginForm());
         }
     }
 }
