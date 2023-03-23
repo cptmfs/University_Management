@@ -22,6 +22,7 @@ namespace University_Management.Forms
 
         private void GradesForm_Load(object sender, EventArgs e)
         {
+
             GradeList();
             cbxLesson.DisplayMember = "LessonName";
             cbxLesson.ValueMember = "LessonID";
@@ -61,6 +62,8 @@ namespace University_Management.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            int id = int.Parse(txtStudent.Text);
+            db.datGrades.Find(id);
             datGrades g = new datGrades();
             g.Exam1 = byte.Parse(txtEx1.Text);
             g.Exam2 = byte.Parse(txtEx2.Text);
@@ -70,7 +73,7 @@ namespace University_Management.Forms
             g.Project = byte.Parse(txtProject.Text);
             g.Lesson = int.Parse(cbxLesson.SelectedValue.ToString());
             g.Student = int.Parse(txtStudent.Text);
-            g.StudentAvg = int.Parse(txtAvg.Text);
+            g.StudentAvg = int.Parse(txtAvg.Text); 
             db.datGrades.Add(g);
             db.SaveChanges();
             MessageBox.Show("Student Grade information has been successfully saved in the system", "Grade Add", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -99,6 +102,8 @@ namespace University_Management.Forms
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >=0)
+            {
             txtID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtEx1.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtEx2.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -109,6 +114,9 @@ namespace University_Management.Forms
             txtAvg.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
             cbxLesson.SelectedValue = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[10].Value.ToString());
             txtStudent.Text = dataGridView1.Rows[e.RowIndex].Cells[12].Value.ToString();
+            }
+
+
 
         }
 
