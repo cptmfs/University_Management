@@ -61,7 +61,10 @@ namespace University_Management.Forms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            StudentLoginForm st = new StudentLoginForm();
+            st.Show();
             this.Close();
+            
         }
     }
 }
